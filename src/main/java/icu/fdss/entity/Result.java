@@ -2,6 +2,7 @@ package icu.fdss.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Result<T> {
     /**
      * 业务状态码  0-成功  1-失败
