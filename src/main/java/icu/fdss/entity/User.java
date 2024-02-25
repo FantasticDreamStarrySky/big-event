@@ -1,11 +1,14 @@
 package icu.fdss.entity;
 
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 /**
  * @author 🌃梦幻◎星空🌃
  */
+@Data
 public class User {
     /**
      * 主键ID
