@@ -1,6 +1,7 @@
 ### IntelliJ IDEA ###
 /.idea/
 /**/target/
+/big-event.iml
 
 ### FastRequest ###
 /.fastRequest/
