@@ -3,6 +3,7 @@ package icu.fdss.controller;
 import icu.fdss.entity.Result;
 import icu.fdss.entity.User;
 import icu.fdss.service.UserService;
+import icu.fdss.utils.JwtUtil;
 import icu.fdss.utils.Md5Util;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 🌃梦幻◎星空🌃
@@ -56,12 +60,19 @@ public class UserController {
         User loginUser = userService.findByUserName(username);
         // 查询用户是否存在
         if (loginUser == null) {
+            // 用户不存在
             return Result.error("用户名错误");
         } else {
             // 密码是否正确
             if (Md5Util.checkPassword(password, loginUser.getPassword())) {
-                return Result.success("JWT令牌");
+                // 登录成功，返回JWT令牌
+                Map<String, Object> claims = new HashMap<>(2);
+                claims.put("id", loginUser.getId());
+                claims.put("username", loginUser.getUsername());
+                String token = JwtUtil.genToken(claims);
+                return Result.success(token);
             } else {
+                // 密码错误
                 return Result.error("密码错误");
             }
         }
