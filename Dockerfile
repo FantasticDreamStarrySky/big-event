@@ -15,6 +15,9 @@ RUN mkdir -p $HOME/.m2 && \
 # 将整个项目复制到容器中
 COPY src ./src
 
+# 修改配置文件, 使用 Docker 配置
+RUN sed -i 's/active: local/active: Docker/g' ./src/main/resources/application.yml
+
 # 构建应用
 RUN mvn package -DskipTests
 
