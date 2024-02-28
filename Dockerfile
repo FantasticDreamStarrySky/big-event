@@ -1,4 +1,4 @@
-# 使用 Maven 官方提供的 OpenJDK 镜像作为基础镜像
+# 用于构建 Spring Boot 应用程序的 Docker 镜像
 FROM maven AS build
 
 # 设置工作目录
@@ -7,16 +7,14 @@ WORKDIR /app
 # 将项目的 pom.xml 文件复制到容器中
 COPY pom.xml .
 
-# 下载依赖并构建项目
-RUN mkdir -p $HOME/.m2 && \
-    echo "<settings><mirrors><mirror><id>aliyun-maven</id><url>https://maven.aliyun.com/repository/public</url><mirrorOf>central</mirrorOf></mirror></mirrors></settings>" > $HOME/.m2/settings.xml && \
-    mvn dependency:go-offline
+# 将 Maven 的配置文件复制到容器中
+COPY config/maven/settings.xml /root/.m2/settings.xml
 
 # 将整个项目复制到容器中
 COPY src ./src
 
 # 修改配置文件, 使用 Docker 配置
-RUN sed -i 's/active: local/active: Docker/g' ./src/main/resources/application.yml
+RUN sed -i 's/active: local/active: docker/g' ./src/main/resources/application.yml
 
 # 构建应用
 RUN mvn package -DskipTests

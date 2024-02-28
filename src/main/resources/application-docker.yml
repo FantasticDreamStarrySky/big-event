@@ -1,6 +1,6 @@
-# docker环境的配置
+# docker环境配置
 big-event:
   database:
-    host: localhost
+    host: mysql
     username: root
     password: 1234
