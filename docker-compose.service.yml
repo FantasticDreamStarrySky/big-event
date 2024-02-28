@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_CHARSET: utf8mb4
+    volumes:
+      - ./.mysql-data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    depends_on:
+      - big-event
+    networks:
+      - backend
+  big-event:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: big-event:latest
+    container_name: big-event
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: Asia/Shanghai
+    networks:
+      - frontend
+      - backend
+networks:
+  frontend:
+  backend:
