@@ -1,0 +1,6 @@
+# 本地环境配置
+big-event:
+  database:
+    host: localhost
+    username: root
+    password: 1234

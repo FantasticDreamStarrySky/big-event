@@ -1,9 +1,15 @@
+server:
+  port: 8080
 spring:
+  application:
+    name: big-event
+  profiles:
+    active: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/big_event?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 1234
+    url: jdbc:mysql:/${big-event.database.host}:3306/big_event?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: ${big-event.database.username}
+    password: ${big-event.database.password}
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
