@@ -5,3 +5,7 @@
 
 ### FastRequest ###
 /.fastRequest/
+
+### Data ###
+/.mysql-data/
+/.redis-data/
