@@ -7,7 +7,7 @@ spring:
     active: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql:/${big-event.database.host}:3306/big_event?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${big-event.database.host}:3306/big_event?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: ${big-event.database.username}
     password: ${big-event.database.password}
 mybatis:

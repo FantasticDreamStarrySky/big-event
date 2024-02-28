@@ -3,6 +3,8 @@ package icu.fdss.service;
 import icu.fdss.entity.User;
 
 /**
+ * 用户服务
+ *
  * @author 🌃梦幻◎星空🌃
  */
 public interface UserService {
