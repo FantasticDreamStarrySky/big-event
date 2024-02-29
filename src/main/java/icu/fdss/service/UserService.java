@@ -32,4 +32,11 @@ public interface UserService {
      * @apiNote 更新用户信息
      */
     void update(User user);
+
+    /**
+     * 更新用户头像
+     *
+     * @param avatarUrl 头像地址
+     */
+    void updateAvatar(String avatarUrl);
 }
