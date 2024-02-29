@@ -30,12 +30,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     /**
      * 注册
      *
      * @param username 用户名
      * @param password 密码
-     * @return 注册结果
+     * @return {@link Result}<{@link String}>
+     * @apiNote 注册成功返回成功信息，失败返回错误信息
      */
     @PostMapping("/register")
     public Result<String> register(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -56,7 +58,8 @@ public class UserController {
      *
      * @param username 用户名
      * @param password 密码
-     * @return 登录结果
+     * @return {@link Result}<{@link String}>
+     * @apiNote 登录成功返回JWT令牌，失败返回错误信息
      */
     @PostMapping("/login")
     public Result<String> login(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -82,6 +85,12 @@ public class UserController {
         }
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @return {@link Result}<{@link User}>
+     * @apiNote 获取当前用户信息
+     */
     @GetMapping("/userInfo")
     public Result<User> userInfo() {
         // 获取当前用户信息
