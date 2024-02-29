@@ -1,10 +1,7 @@
 package icu.fdss.mapper;
 
 import icu.fdss.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author 🌃梦幻◎星空🌃
@@ -28,4 +25,13 @@ public interface UserMapper {
      */
     @Insert("insert into user(username, password, create_time, update_time) values(#{username},#{md5Password},now(),now())")
     void add(@Param("username") String username, @Param("md5Password") String md5Password);
+
+    /**
+     * 更新用户
+     *
+     * @param user 用户
+     * @apiNote 更新用户信息
+     */
+    @Update("update user set nickname=#{nickname},email=#{email},update_time=#{updateTime} where id=#{id}")
+    void update(User user);
 }
