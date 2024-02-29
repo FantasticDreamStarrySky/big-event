@@ -15,9 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 用户控制器
+ * 用户控制类
  *
  * @author 🌃梦幻◎星空🌃
+ * @apiNote 处理用户相关的操作和逻辑控制。提供用户管理功能，包括用户注册、登录、获取用户信息、更新用户信息等。
  */
 @Validated
 @RestController
@@ -34,7 +35,7 @@ public class UserController {
      * @param username 用户名
      * @param password 密码
      * @return {@link Result}<{@link String}>
-     * @apiNote 注册成功返回成功信息，失败返回错误信息
+     * @apiNote 用于处理用户注册请求，注册成功返回成功信息，失败返回错误信息
      */
     @PostMapping("/register")
     public Result<String> register(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -56,7 +57,7 @@ public class UserController {
      * @param username 用户名
      * @param password 密码
      * @return {@link Result}<{@link String}>
-     * @apiNote 登录成功返回JWT令牌，失败返回错误信息
+     * @apiNote 处理用户登录请求，登录成功返回JWT令牌，失败返回错误信息
      */
     @PostMapping("/login")
     public Result<String> login(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -86,7 +87,7 @@ public class UserController {
      * 获取用户信息
      *
      * @return {@link Result}<{@link User}>
-     * @apiNote 获取当前用户信息
+     * @apiNote 处理获取当前用户信息请求，返回当前用户信息
      */
     @GetMapping("/userInfo")
     public Result<User> userInfo() {
@@ -98,8 +99,15 @@ public class UserController {
         return Result.success(user);
     }
 
+    /**
+     * 更新用户信息
+     *
+     * @param user 用户
+     * @return {@link Result}<{@link String}>
+     * @apiNote 处理更新用户信息请求，更新成功返回成功信息，失败返回错误信息
+     */
     @PutMapping("/update")
-    public Result<String> update(@RequestBody User user){
+    public Result<String> update(@RequestBody User user) {
         userService.update(user);
         return Result.success();
     }

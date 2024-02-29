@@ -6,6 +6,7 @@ import icu.fdss.entity.User;
  * 用户服务
  *
  * @author 🌃梦幻◎星空🌃
+ * @apiNote 用户服务接口
  */
 public interface UserService {
     /**
