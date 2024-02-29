@@ -6,6 +6,7 @@ import icu.fdss.entity.User;
  * 用户服务
  *
  * @author 🌃梦幻◎星空🌃
+ * @apiNote 用户服务接口
  */
 public interface UserService {
     /**
@@ -23,4 +24,12 @@ public interface UserService {
      * @param password 密码
      */
     void register(String username, String password);
+
+    /**
+     * 更新用户
+     *
+     * @param user 用户
+     * @apiNote 更新用户信息
+     */
+    void update(User user);
 }

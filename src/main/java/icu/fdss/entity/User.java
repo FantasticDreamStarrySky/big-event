@@ -1,8 +1,12 @@
 package icu.fdss.entity;
 
 
-import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +20,7 @@ public class User {
     /**
      * 主键ID
      */
+    @NotNull
     private Integer id;
     /**
      * 用户名
@@ -29,10 +34,14 @@ public class User {
     /**
      * 昵称
      */
+    @NotEmpty
+    @Pattern(regexp = "^\\S{1,10}$")
     private String nickname;
     /**
      * 邮箱
      */
+    @NotEmpty
+    @Email
     private String email;
     /**
      * 用户头像地址

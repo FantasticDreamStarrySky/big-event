@@ -7,10 +7,13 @@ import icu.fdss.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * 用户服务实现类
  *
  * @author 🌃梦幻◎星空🌃
+ * @apiNote 用户服务实现类
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -41,5 +44,17 @@ public class UserServiceImpl implements UserService {
         String md5Password = Md5Util.getMD5String(password);
         // 注册
         userMapper.add(username, md5Password);
+    }
+
+    /**
+     * 更新用户
+     *
+     * @param user 用户
+     * @apiNote 更新用户信息
+     */
+    @Override
+    public void update(User user) {
+        user.setUpdateTime(LocalDateTime.now());
+        userMapper.update(user);
     }
 }
