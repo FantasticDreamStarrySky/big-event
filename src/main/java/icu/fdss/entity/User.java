@@ -2,10 +2,13 @@ package icu.fdss.entity;
 
 
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
 
 /**
+ * 用户实体类
+ *
  * @author 🌃梦幻◎星空🌃
  */
 @Data
@@ -21,6 +24,7 @@ public class User {
     /**
      * 密码
      */
+    @JsonIgnore
     private String password;
     /**
      * 昵称

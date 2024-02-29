@@ -12,4 +12,5 @@ spring:
     password: ${big-event.database.password}
 mybatis:
   configuration:
+    map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
