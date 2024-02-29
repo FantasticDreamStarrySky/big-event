@@ -6,6 +6,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
+ * 文章实体类
+ *
  * @author 🌃梦幻◎星空🌃
  */
 @Data
