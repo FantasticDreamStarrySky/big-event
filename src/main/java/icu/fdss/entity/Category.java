@@ -5,6 +5,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
+ * 分类实体类
+ *
  * @author 🌃梦幻◎星空🌃
  */
 @Data
