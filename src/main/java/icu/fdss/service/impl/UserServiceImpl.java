@@ -69,6 +69,18 @@ public class UserServiceImpl implements UserService {
     public void updateAvatar(String avatarUrl) {
         Map<String, Object> claims = ThreadLocalUtil.get();
         Integer id = (Integer) claims.get("id");
-        userMapper.updateAvatar(avatarUrl,id);
+        userMapper.updateAvatar(avatarUrl, id);
+    }
+
+    /**
+     * 更新用户密码
+     *
+     * @param newPwd 新密码
+     */
+    @Override
+    public void updatePwd(String newPwd) {
+        Map<String, Object> claims = ThreadLocalUtil.get();
+        Integer id = (Integer) claims.get("id");
+        userMapper.updatePwd(Md5Util.getMD5String(newPwd), id);
     }
 }

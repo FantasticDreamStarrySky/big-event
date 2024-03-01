@@ -39,4 +39,11 @@ public interface UserService {
      * @param avatarUrl 头像地址
      */
     void updateAvatar(String avatarUrl);
+
+    /**
+     * 更新用户密码
+     *
+     * @param newPwd 新密码
+     */
+    void updatePwd(String newPwd);
 }
