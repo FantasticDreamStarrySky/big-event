@@ -4,10 +4,9 @@ import icu.fdss.entity.User;
 import org.apache.ibatis.annotations.*;
 
 /**
- * 用户映射器
+ * 用户数据访问接口
  *
  * @author 🌃梦幻◎星空🌃
- * @apiNote 用户映射器
  */
 @Mapper
 public interface UserMapper {
