@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 用户控制类
+ * 用户
  *
  * @author 🌃梦幻◎星空🌃
  * @apiNote 处理用户相关的操作和逻辑控制。提供用户管理功能，包括用户注册、登录、获取用户信息、更新用户信息、更新用户头像、更新用户密码。

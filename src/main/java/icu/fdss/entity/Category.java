@@ -1,5 +1,6 @@
 package icu.fdss.entity;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,10 +19,12 @@ public class Category {
     /**
      * 分类名称
      */
+    @NotEmpty(message = "分类名称不能为空")
     private String categoryName;
     /**
      * 分类别名
      */
+    @NotEmpty(message = "分类别名不能为空")
     private String categoryAlias;
     /**
      * 创建人ID
