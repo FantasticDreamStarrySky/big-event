@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,10 +32,22 @@ public class CategoryServiceImpl implements CategoryService {
         // 补充属性值
         category.setCreateTime(LocalDateTime.now());
         category.setUpdateTime(LocalDateTime.now());
-        Map<String,Object> claims = ThreadLocalUtil.get();
+        Map<String, Object> claims = ThreadLocalUtil.get();
         Integer userId = (Integer) claims.get("id");
         category.setCreateUser(userId);
 
         categoryMapper.add(category);
+    }
+
+    /**
+     * 文章列表查询
+     *
+     * @return {@link List}<{@link Category}>
+     */
+    @Override
+    public List<Category> list() {
+        Map<String, Object> claims = ThreadLocalUtil.get();
+        Integer userId = (Integer) claims.get("id");
+        return categoryMapper.list(userId);
     }
 }

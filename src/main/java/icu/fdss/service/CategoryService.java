@@ -2,6 +2,8 @@ package icu.fdss.service;
 
 import icu.fdss.entity.Category;
 
+import java.util.List;
+
 /**
  * 文章分类服务接口
  *
@@ -16,4 +18,10 @@ public interface CategoryService {
      */
     void add(Category category);
 
+    /**
+     * 文章列表查询
+     *
+     * @return {@link List}<{@link Category}>
+     */
+    List<Category> list();
 }
