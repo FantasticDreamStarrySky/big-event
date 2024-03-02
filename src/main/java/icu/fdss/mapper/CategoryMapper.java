@@ -32,4 +32,13 @@ public interface CategoryMapper {
      */
     @Select("select * from category where create_user=#{userId}")
     List<Category> list(Integer userId);
+
+    /**
+     * 根据ID查询文章分类详情
+     *
+     * @param id 文章分类ID
+     * @return {@link Category} 文章分类详情
+     */
+    @Select("select * from category where id=#{id}")
+    Category findById(Integer id);
 }

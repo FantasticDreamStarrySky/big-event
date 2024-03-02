@@ -50,4 +50,15 @@ public class CategoryServiceImpl implements CategoryService {
         Integer userId = (Integer) claims.get("id");
         return categoryMapper.list(userId);
     }
+
+    /**
+     * 根据id查询文章分类详情
+     *
+     * @param id 分类id
+     * @return {@link Category} 文章分类详情
+     */
+    @Override
+    public Category findById(Integer id) {
+        return categoryMapper.findById(id);
+    }
 }

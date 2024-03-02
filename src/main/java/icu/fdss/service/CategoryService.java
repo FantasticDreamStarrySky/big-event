@@ -19,9 +19,17 @@ public interface CategoryService {
     void add(Category category);
 
     /**
-     * 文章列表查询
+     * 文章分类列表查询
      *
-     * @return {@link List}<{@link Category}>
+     * @return {@link List}<{@link Category}> 文章分类列表
      */
     List<Category> list();
+
+    /**
+     * 根据id查询文章分类详情
+     *
+     * @param id 分类id
+     * @return {@link Category} 文章分类详情
+     */
+    Category findById(Integer id);
 }
