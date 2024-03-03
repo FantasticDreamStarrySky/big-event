@@ -13,7 +13,7 @@ import java.util.List;
  * 文章分类
  *
  * @author 🌃梦幻◎星空🌃
- * @apiNote 处理文章分类相关的操作和逻辑控制。提供文章分类管理功能，包括新增文章分类，文章分类列表查询，文章分类详情查询。
+ * @apiNote 处理文章分类相关的操作和逻辑控制。提供文章分类管理功能，包括新增文章分类，文章分类列表查询，文章分类详情查询，更新文章分类，删除文章分类。
  */
 @RestController
 @RequestMapping("/category")
@@ -70,6 +70,19 @@ public class CategoryController {
     @PutMapping
     public Result<String> update(@RequestBody @Validated(Category.Update.class) Category category) {
         categoryService.update(category);
+        return Result.success();
+    }
+
+    /**
+     * 删除文章分类
+     *
+     * @param id 文章分类ID
+     * @return {@link Result}<{@link String}> 响应成功信息
+     * @apiNote 用于处理删除文章分类请求，删除成功返回成功信息。
+     */
+    @DeleteMapping
+    public Result<String> delete(Integer id) {
+        categoryService.deleteById(id);
         return Result.success();
     }
 }

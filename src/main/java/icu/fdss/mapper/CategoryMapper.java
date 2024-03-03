@@ -1,10 +1,7 @@
 package icu.fdss.mapper;
 
 import icu.fdss.entity.Category;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -50,4 +47,12 @@ public interface CategoryMapper {
      */
     @Update("update category set category_name=#{categoryName}, category_alias=#{categoryAlias}, update_time=#{updateTime} where id=#{id}")
     void update(Category category);
+
+    /**
+     * 根据ID删除文章分类
+     *
+     * @param id 文章分类ID
+     */
+    @Delete("delete from category where id=#{id}")
+    void deleteById(Integer id);
 }
