@@ -17,17 +17,17 @@ public class Category {
     /**
      * 主键ID
      */
-    @NotNull(message = "文章分类ID不能为空")
+    @NotNull(message = "文章分类ID不能为空", groups = Update.class)
     private Integer id;
     /**
      * 分类名称
      */
-    @NotEmpty(message = "文章分类名称不能为空")
+    @NotEmpty(message = "文章分类名称不能为空", groups = {Add.class, Update.class})
     private String categoryName;
     /**
      * 分类别名
      */
-    @NotEmpty(message = "文章分类别名不能为空")
+    @NotEmpty(message = "文章分类别名不能为空", groups = {Add.class, Update.class})
     private String categoryAlias;
     /**
      * 创建人ID
@@ -43,4 +43,12 @@ public class Category {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
+
+    public interface Add {
+
+    }
+
+    public interface Update {
+
+    }
 }
