@@ -1,11 +1,15 @@
 package icu.fdss.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.groups.Default;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 /**
- * 分类实体类
+ * 文章分类实体类
  *
  * @author 🌃梦幻◎星空🌃
  */
@@ -14,14 +18,17 @@ public class Category {
     /**
      * 主键ID
      */
+    @NotNull(message = "文章分类ID不能为空", groups = Update.class)
     private Integer id;
     /**
      * 分类名称
      */
+    @NotEmpty(message = "文章分类名称不能为空")
     private String categoryName;
     /**
      * 分类别名
      */
+    @NotEmpty(message = "文章分类别名不能为空")
     private String categoryAlias;
     /**
      * 创建人ID
@@ -30,9 +37,19 @@ public class Category {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
     /**
      * 更新时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
+
+    public interface Add extends Default {
+
+    }
+
+    public interface Update extends Default {
+
+    }
 }
