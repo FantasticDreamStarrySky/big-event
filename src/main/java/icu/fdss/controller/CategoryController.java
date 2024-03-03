@@ -30,7 +30,7 @@ public class CategoryController {
      * @apiNote 用于处理新增文章分类请求，新增成功返回成功信息。
      */
     @PostMapping
-    public Result<String> add(@RequestBody @Validated Category category) {
+    public Result<String> add(@RequestBody @Validated(Category.Add.class) Category category) {
         categoryService.add(category);
         return Result.success();
     }
@@ -68,7 +68,7 @@ public class CategoryController {
      * @apiNote 用于处理更新文章分类请求，更新成功返回成功信息。
      */
     @PutMapping
-    public Result<String> update(@RequestBody @Validated Category category) {
+    public Result<String> update(@RequestBody @Validated(Category.Update.class) Category category) {
         categoryService.update(category);
         return Result.success();
     }
