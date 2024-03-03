@@ -61,4 +61,15 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findById(Integer id) {
         return categoryMapper.findById(id);
     }
+
+    /**
+     * 更新文章分类
+     *
+     * @param category 文章分类
+     */
+    @Override
+    public void update(Category category) {
+        category.setUpdateTime(LocalDateTime.now());
+        categoryMapper.update(category);
+    }
 }

@@ -59,4 +59,17 @@ public class CategoryController {
         Category category = categoryService.findById(id);
         return Result.success(category);
     }
+
+    /**
+     * 更新文章分类
+     *
+     * @param category 文章分类
+     * @return {@link Result}<{@link String}> 响应成功信息
+     * @apiNote 用于处理更新文章分类请求，更新成功返回成功信息。
+     */
+    @PutMapping
+    public Result<String> update(@RequestBody @Validated Category category) {
+        categoryService.update(category);
+        return Result.success();
+    }
 }

@@ -2,6 +2,7 @@ package icu.fdss.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,16 +17,17 @@ public class Category {
     /**
      * 主键ID
      */
+    @NotNull(message = "文章分类ID不能为空")
     private Integer id;
     /**
      * 分类名称
      */
-    @NotEmpty(message = "分类名称不能为空")
+    @NotEmpty(message = "文章分类名称不能为空")
     private String categoryName;
     /**
      * 分类别名
      */
-    @NotEmpty(message = "分类别名不能为空")
+    @NotEmpty(message = "文章分类别名不能为空")
     private String categoryAlias;
     /**
      * 创建人ID
