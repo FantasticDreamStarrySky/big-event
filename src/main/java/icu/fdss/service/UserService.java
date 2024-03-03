@@ -13,7 +13,7 @@ public interface UserService {
      * 根据用户名查询用户
      *
      * @param username 用户名
-     * @return {@link User 用户实体类}
+     * @return {@link User}
      */
     User findByUserName(String username);
 
@@ -39,4 +39,11 @@ public interface UserService {
      * @param avatarUrl 头像地址
      */
     void updateAvatar(String avatarUrl);
+
+    /**
+     * 更新用户密码
+     *
+     * @param newPwd 新密码
+     */
+    void updatePwd(String newPwd);
 }
