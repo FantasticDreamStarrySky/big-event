@@ -3,6 +3,7 @@ package icu.fdss.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.groups.Default;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -22,12 +23,12 @@ public class Category {
     /**
      * 分类名称
      */
-    @NotEmpty(message = "文章分类名称不能为空", groups = {Add.class, Update.class})
+    @NotEmpty(message = "文章分类名称不能为空")
     private String categoryName;
     /**
      * 分类别名
      */
-    @NotEmpty(message = "文章分类别名不能为空", groups = {Add.class, Update.class})
+    @NotEmpty(message = "文章分类别名不能为空")
     private String categoryAlias;
     /**
      * 创建人ID
@@ -44,11 +45,11 @@ public class Category {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
-    public interface Add {
+    public interface Add extends Default {
 
     }
 
-    public interface Update {
+    public interface Update extends Default {
 
     }
 }
