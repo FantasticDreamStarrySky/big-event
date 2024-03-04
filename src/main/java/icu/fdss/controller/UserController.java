@@ -9,12 +9,14 @@ import icu.fdss.utils.ThreadLocalUtil;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户
@@ -29,6 +31,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
 
     /**
@@ -77,6 +81,8 @@ public class UserController {
                 claims.put("id", loginUser.getId());
                 claims.put("username", loginUser.getUsername());
                 String token = JwtUtil.genToken(claims);
+                // 把token存储到redis中
+                stringRedisTemplate.opsForValue().set(token, token, JwtUtil.EXPIRE_TIME, TimeUnit.MILLISECONDS);
                 return Result.success(token);
             } else {
                 // 密码错误
@@ -135,7 +141,7 @@ public class UserController {
      * @apiNote 处理更新用户密码请求，更新成功返回成功信息。
      */
     @PatchMapping("/updatePwd")
-    public Result<String> updatePwd(@RequestBody Map<String, String> params) {
+    public Result<String> updatePwd(@RequestBody Map<String, String> params, @RequestHeader("Authorization") String token) {
         // 1. 校验参数
         String oldPwd = params.get("old_pwd");
         String newPwd = params.get("new_pwd");
@@ -160,8 +166,9 @@ public class UserController {
         }
 
         // 2.调用service完成密码更新
-
         userService.updatePwd(newPwd);
+        // 删除redis中的token
+        stringRedisTemplate.delete(token);
         return Result.success();
     }
 }
