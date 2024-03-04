@@ -46,4 +46,12 @@ public interface ArticleMapper {
      */
     @Update("update article set title=#{title},content=#{content},cover_img=#{coverImg},state=#{state},category_id=#{categoryId},update_time=#{updateTime} where id=#{id}")
     void update(Article article);
+
+    /**
+     * 删除文章
+     *
+     * @param id 文章ID
+     */
+    @Delete("delete from article where id = #{id}")
+    void deleteById(Integer id);
 }

@@ -81,4 +81,17 @@ public class ArticleController {
         return Result.success();
     }
 
+    /**
+     * 删除文章
+     *
+     * @param id 文章id
+     * @return {@link Result}<{@link String}> 响应成功信息
+     * @apiNote 用于处理删除文章请求，删除成功返回成功信息。
+     */
+    @DeleteMapping
+    public Result<String> delete(Integer id) {
+        articleService.delete(id);
+        return Result.success();
+    }
+
 }

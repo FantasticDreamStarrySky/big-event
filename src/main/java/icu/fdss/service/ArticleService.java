@@ -42,4 +42,11 @@ public interface ArticleService {
      * @param article 文章
      */
     void update(Article article);
+
+    /**
+     * 删除文章
+     *
+     * @param id 文章ID
+     */
+    void delete(Integer id);
 }
