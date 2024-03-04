@@ -27,4 +27,12 @@ public interface ArticleService {
      * @return {@link PageBean}<{@link Article}> 文章分页列表
      */
     PageBean<Article> list(Integer pageNum, Integer pageSize, Integer categoryId, String state);
+
+    /**
+     * 文章详情查询
+     *
+     * @param id 文章ID
+     * @return {@link Article} 文章详情
+     */
+    Article detail(Integer id);
 }

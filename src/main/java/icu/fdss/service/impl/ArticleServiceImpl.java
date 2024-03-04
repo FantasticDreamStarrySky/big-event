@@ -72,4 +72,15 @@ public class ArticleServiceImpl implements ArticleService {
         // 5. 返回分页数据
         return pageBean;
     }
+
+    /**
+     * 文章详情查询
+     *
+     * @param id 文章ID
+     * @return {@link Article} 文章详情
+     */
+    @Override
+    public Article detail(Integer id) {
+        return articleMapper.findById(id);
+    }
 }

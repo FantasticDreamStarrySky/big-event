@@ -55,4 +55,17 @@ public class ArticleController {
         return Result.success(articlePageBean);
     }
 
+    /**
+     * 文章详情查询
+     *
+     * @param id 文章id
+     * @return {@link Result}<{@link Article}> 文章详情
+     * @apiNote 用于处理文章详情查询请求，返回文章详情。
+     */
+    @GetMapping("/detail")
+    public Result<Article> detail(Integer id) {
+        Article article = articleService.detail(id);
+        return Result.success(article);
+    }
+
 }

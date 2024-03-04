@@ -4,6 +4,7 @@ import icu.fdss.entity.Article;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -31,4 +32,13 @@ public interface ArticleMapper {
      * @return {@link List}<{@link Article}> 文章列表
      */
     List<Article> list(@Param("userId") Integer userId, @Param("categoryId") Integer categoryId, @Param("state") String state);
+
+    /**
+     * 文章详情查询
+     *
+     * @param id 文章ID
+     * @return {@link Article} 文章详情
+     */
+    @Select("select * from article where id = #{id}")
+    Article findById(Integer id);
 }
