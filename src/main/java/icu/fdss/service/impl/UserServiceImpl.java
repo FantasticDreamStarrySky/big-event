@@ -12,10 +12,9 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
- * 用户服务实现类
+ * 用户服务实现
  *
  * @author 🌃梦幻◎星空🌃
- * @apiNote 用户服务实现类
  */
 @Service
 public class UserServiceImpl implements UserService {
