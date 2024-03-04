@@ -3,7 +3,7 @@ package icu.fdss.service;
 import icu.fdss.entity.User;
 
 /**
- * 用户服务
+ * 用户服务接口
  *
  * @author 🌃梦幻◎星空🌃
  * @apiNote 用户服务接口
