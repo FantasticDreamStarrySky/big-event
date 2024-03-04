@@ -1,11 +1,11 @@
 package icu.fdss.controller;
 
 import icu.fdss.entity.Result;
+import icu.fdss.utils.AliOssUtil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -32,10 +32,10 @@ public class FileUploadController {
         // 保证文件的名字是唯一的，从而避免文件的覆盖
         String fileName = null;
         if (originalFilename != null) {
-            fileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
+            fileName = UUID.randomUUID().toString().replace("-", "") + originalFilename.substring(originalFilename.lastIndexOf("."));
         }
-        file.transferTo(new File("D:\\upload\\" + fileName));
-        return Result.success("URL访问地址");
+        String url = AliOssUtil.uploadFile(fileName, file.getInputStream());
+        return Result.success(url);
     }
 
 }
