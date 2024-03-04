@@ -4,6 +4,7 @@ import icu.fdss.entity.Article;
 import icu.fdss.entity.Result;
 import icu.fdss.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class ArticleController {
      * @apiNote 用于处理新增文章请求，新增成功返回成功信息。
      */
     @PostMapping
-    public Result<String> add(@RequestBody Article article) {
+    public Result<String> add(@RequestBody @Validated Article article) {
         articleService.add(article);
         return Result.success();
     }

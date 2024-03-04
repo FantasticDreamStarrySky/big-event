@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 文章数据访问接口
  *
- * @author 艾克拜尔
+ * @author 🌃梦幻◎星空🌃
  */
 @Mapper
 public interface ArticleMapper {
