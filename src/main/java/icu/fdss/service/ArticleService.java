@@ -35,4 +35,11 @@ public interface ArticleService {
      * @return {@link Article} 文章详情
      */
     Article detail(Integer id);
+
+    /**
+     * 更新文章
+     *
+     * @param article 文章
+     */
+    void update(Article article);
 }

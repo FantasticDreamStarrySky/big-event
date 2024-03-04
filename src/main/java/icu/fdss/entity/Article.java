@@ -5,6 +5,7 @@ import icu.fdss.annotation.State;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.groups.Default;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
@@ -20,6 +21,7 @@ public class Article {
     /**
      * 主键ID
      */
+    @NotNull(message = "文章ID不能为空", groups = Update.class)
     private Integer id;
     /**
      * 文章标题
@@ -60,4 +62,12 @@ public class Article {
      * 更新时间
      */
     private LocalDateTime updateTime;
+
+    public interface Add extends Default {
+
+    }
+
+    public interface Update extends Default {
+
+    }
 }

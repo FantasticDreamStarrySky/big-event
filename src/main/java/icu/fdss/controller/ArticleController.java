@@ -29,7 +29,7 @@ public class ArticleController {
      * @apiNote 用于处理新增文章请求，新增成功返回成功信息。
      */
     @PostMapping
-    public Result<String> add(@RequestBody @Validated Article article) {
+    public Result<String> add(@RequestBody @Validated(Article.Add.class) Article article) {
         articleService.add(article);
         return Result.success();
     }
@@ -66,6 +66,19 @@ public class ArticleController {
     public Result<Article> detail(Integer id) {
         Article article = articleService.detail(id);
         return Result.success(article);
+    }
+
+    /**
+     * 更新文章
+     *
+     * @param article 文章
+     * @return {@link Result}<{@link String}> 响应成功信息
+     * @apiNote 用于处理更新文章请求，更新成功返回成功信息。
+     */
+    @PutMapping
+    public Result<String> update(@RequestBody @Validated(Article.Update.class) Article article) {
+        articleService.update(article);
+        return Result.success();
     }
 
 }

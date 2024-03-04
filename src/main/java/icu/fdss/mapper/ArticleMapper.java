@@ -1,10 +1,7 @@
 package icu.fdss.mapper;
 
 import icu.fdss.entity.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -41,4 +38,12 @@ public interface ArticleMapper {
      */
     @Select("select * from article where id = #{id}")
     Article findById(Integer id);
+
+    /**
+     * 更新文章
+     *
+     * @param article 文章
+     */
+    @Update("update article set title=#{title},content=#{content},cover_img=#{coverImg},state=#{state},category_id=#{categoryId},update_time=#{updateTime} where id=#{id}")
+    void update(Article article);
 }
