@@ -1,14 +1,12 @@
 package icu.fdss.controller;
 
 import icu.fdss.entity.Article;
+import icu.fdss.entity.PageBean;
 import icu.fdss.entity.Result;
 import icu.fdss.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 文章
@@ -34,6 +32,27 @@ public class ArticleController {
     public Result<String> add(@RequestBody @Validated Article article) {
         articleService.add(article);
         return Result.success();
+    }
+
+    /**
+     * 文章列表分页查询
+     *
+     * @param pageNum    页码
+     * @param pageSize   每页条数
+     * @param categoryId 分类id
+     * @param state      状态
+     * @return {@link Result}<{@link PageBean}<{@link Article}>> 文章分页列表
+     * @apiNote 用于处理文章列表分页查询请求，返回文章分页列表。
+     */
+    @GetMapping
+    public Result<PageBean<Article>> list(
+            Integer pageNum,
+            Integer pageSize,
+            @RequestParam(required = false) Integer categoryId,
+            @RequestParam(required = false) String state
+    ) {
+        PageBean<Article> articlePageBean = articleService.list(pageNum, pageSize, categoryId, state);
+        return Result.success(articlePageBean);
     }
 
 }
